@@ -1,0 +1,88 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "address": "https://cloudflare-dns.com/dns-query",
+        "address_resolver": "resolver",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "resolver",
+        "address": "1.1.1.1"
+      }
+    ],
+    "strategy": "prefer_ipv4"
+  },
+  "inbounds": [
+    {
+      "type": "socks",
+      "tag": "socks-in",
+      "listen": "0.0.0.0",
+      "listen_port": 6353,
+      "users": [
+        {
+          "Username": "admin",
+          "Password": "642809"
+        }
+      ]
+    },
+
+    {
+      "type": "http",
+      "listen": "0.0.0.0",
+      "listen_port": 6354
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "proxy",
+      "domain_strategy": "ipv4_only",
+      "server": "77.239.102.78",
+      "server_port": 8443,
+      "uuid": "34e34ed6-dd99-4c40-a66f-f3b28c6e9afc",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "teamdocs.su",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "Y65LzBvPinDW6aTGeTK-leXJp1AiEOKaNs-5C82NuyM",
+          "short_id": "d7"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "rule_set": "geoip-ru",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geoip-ru",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-ru.srs",
+        "download_detour": "proxy"
+      }
+    ]
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@define-color base rgba(25, 23, 36, 0.7);
+@define-color surface rgba(31, 29, 46, 0.3);
+@define-color overlay #26233a;
+
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+
+@define-color highlightLow #21202e;
+@define-color highlightMed #403d52;
+@define-color highlightHigh #524f67;
+
+* {
+  font-family: "CaskaydiaCove Mono Nerd";
+  font-size: 12px;
+  font-weight: 600;
+  color: @text;
+}
+
+window#waybar {
+  background: @base;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-radius: 10px;
+}
+
+#window {
+  margin: 3px 5px;
+}
+
+#workspaces {
+  border-radius: 20px;
+  background-color: @surface;
+  padding: 0px 5px;
+  margin: 0px;
+}
+
+#workspaces button {
+  padding: 0px 15px;
+  margin: 3px 0px;
+  min-height: 20px;
+  background-color: transparent;
+  color: @text;
+  border-radius: 20px;
+  border-color: transparent;
+  transition:
+    min-width 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+  min-width: 50px;
+  background-color: @overlay;
+}
+
+#clock {
+  background-color: transparent;
+  padding: 3px 10px;
+  margin: 3px 5px;
+  color: @text;
+}
+
+#tray,
+#cpu,
+#temperature,
+#memory,
+#battery,
+#pulseaudio,
+#language,
+#network {
+  padding: 0px 5px;
+  margin: 3px 5px;
+  border-radius: 5px;
+  color: @text;
+  background: @surface;
+}
+
+#network {
+  padding-right: 12px;
+  margin-right: 10px;
+}

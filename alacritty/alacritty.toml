@@ -1,0 +1,25 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_macchiato.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+opacity = 0.25
+blur = true
+padding.x = 10
+padding.y = 10
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size = 11.0
+
+[keyboard]
+bindings = [
+{ key = "C", mods = "Control|Shift", action = "Copy" }
+]
+
+[terminal]
+shell = "/usr/bin/zsh"

@@ -1,0 +1,105 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
+  "margin": "10 10 0 10",
+
+  "modules-left": ["clock", "hyprland/window"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": [
+    "tray", "cpu", "temperature", "memory",
+    "battery", "pulseaudio", "hyprland/language", "network"
+  ],
+
+  "clock": {
+    "interval": 1,
+    "tooltip": true,
+    "format": "{:%H:%M:%S}",
+    "tooltip-format": "{:%Y-%m-%d}"
+  },
+
+  "hyprland/window": {
+    "format": "{title} - {class}"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{name} {windows}",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "class<librewolf>": "",
+      "class<firefox>": "󰈹",
+      "class<alacritty>": "",
+      "class<org.kde.dolphin>": "󱢴",
+      "title<cava>": "󰟌",
+      "title<Easy Effects>": "",
+      "class<org.keepassxc.KeePassXC>": "",
+      "class<.blueman-managed-wrapped>": "󰂯",
+      "class<jetbrains-toolbox>": "",
+      "class<jetbrains-goland>": "",
+      "class<codium>": "",
+      "class<org.telegram.desktop>": "",
+      "class<joplin>": "󱞂",
+      "class<insomnia>": ""
+    }
+  },
+
+  "tray": {
+    "spacing": 10,
+    "icon-size": 16
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 1
+  },
+
+  "temperature": {
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon1/temp1_input",
+      "/sys/class/hwmon/hwmon2/temp1_input",
+      "/sys/class/hwmon/hwmon3/temp1_input",
+      "/sys/class/hwmon/hwmon4/temp1_input"
+    ],
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [""],
+    "interval": 1
+  },
+
+  "memory": {
+    "format": "  {used} / {total}",
+    "interval": 5
+  },
+
+  "battery": {
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}%  ",
+    "format-plugged": "{capacity}%  ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-icons": {
+      "default": ["", ""]
+    }
+  },
+
+  "hyprland/language": {
+    "format": "{short}"
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "",
+    "format-disabled": ""
+  }
+}
