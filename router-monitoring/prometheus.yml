@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+
+scrape_configs:
+  - job_name: 'Maltsev-asus (asuswrt-merlin-AC87U)'
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - '192.168.1.1:9101'
+  - job_name: 'maltsevs_home (asuswrt-merlin-AX58U)'
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - '192.168.50.1:9100'

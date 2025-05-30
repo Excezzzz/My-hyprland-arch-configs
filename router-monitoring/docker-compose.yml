@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  prometheus:
+    container_name: router-prometheus
+    image: prom/prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - promdata:/prometheus
+    command: --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - 9091:9090
+    networks:
+        - router-monitoring
+
+  grafana:
+    container_name: router-grafana
+    image: grafana/grafana-oss
+    restart: unless-stopped
+    ports:
+      - 3031:3000
+    volumes:
+      - grafanadata:/var/lib/grafana
+    networks:
+        - router-monitoring
+
+
+volumes:
+  promdata:
+  grafanadata:
+
+networks:
+    router-monitoring:
+        driver: bridge
